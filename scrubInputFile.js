@@ -24,7 +24,7 @@ let ReadAndMapFile = (path, callback) => {
         }
 
         let splitLines = [];
-        data.toString().split("\r\n").map((item) => {
+        data.toString().split("\n").map((item) => {
             let trimmedLine = item.trim();
             if (trimmedLine.length > 0){
                 splitLines.push(trimmedLine);
@@ -77,7 +77,7 @@ let ReadAndMapFile = (path, callback) => {
             });
 
             // Reduce the input data and dump out the stream
-            fs.writeFileSync(OUTPUT_TXT_PATH, scrubbedInputData.join("\r\n"));
+            fs.writeFileSync(OUTPUT_TXT_PATH, scrubbedInputData.join("\n"));
 
             end = new Date();
             console.log(`Total execution time: ${(end-start)}ms`)
