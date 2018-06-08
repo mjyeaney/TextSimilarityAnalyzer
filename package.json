@@ -1,0 +1,16 @@
+{
+  "name": "policytextanalyzer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "dependencies": {
+    "moment": "^2.22.2",
+    "pdf2json": "^1.1.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Yeaney",
+  "license": "MIT"
+}

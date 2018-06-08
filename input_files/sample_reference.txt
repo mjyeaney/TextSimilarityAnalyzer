@@ -1,0 +1,7 @@
+This a reference file that contains some text.
+
+The secret is here.
+
+The rest of this is just noise.
+
+We will not discuss a secret.
