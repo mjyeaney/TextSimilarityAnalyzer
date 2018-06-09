@@ -4,13 +4,13 @@
 
     Tested on Python 3.6.4, Windows 10 x64
 """
-
+import os
 import time
 import io
 
-REFERENCE_TXT_PATH = ".\\input_files\\sample_reference.txt"
-INPUT_TXT_PATH = ".\\input_files\\sample_input.txt"
-OUTPUT_TXT_PATH = ".\\output_files\\scrubbed_output.txt"
+REFERENCE_TXT_PATH = os.path.join(".", "input_files", "sample_reference.txt")
+INPUT_TXT_PATH = os.path.join(".", "input_files", "sample_input.txt")
+OUTPUT_TXT_PATH = os.path.join(".", "output_files", "scrubbed_output.txt")
 
 def readAndMapFile(path):
     """
