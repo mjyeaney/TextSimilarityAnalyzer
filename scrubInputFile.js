@@ -6,11 +6,12 @@
 */
 
 const fs = require("fs"),
-    moment = require("moment");
+    moment = require("moment"),
+    path = require("path");
 
-const REFERENCE_TXT_PATH = ".\\input_files\\sample_reference.txt",
-    INPUT_TXT_PATH = ".\\input_files\\sample_input.txt",
-    OUTPUT_TXT_PATH = ".\\output_files\\scrubbed_output.txt";
+const REFERENCE_TXT_PATH = path.join(".", "input_files", "sample_reference.txt"),
+    INPUT_TXT_PATH = path.join(".", "input_files", "sample_input.txt"),
+    OUTPUT_TXT_PATH = path.join(".", "output_files", "scrubbed_output.txt");
 
 // Main file breaker - this takes a given file and breaks it into arbitrary 
 // fragments, returning and array of fragments. For simplicity, this is breaking on 
