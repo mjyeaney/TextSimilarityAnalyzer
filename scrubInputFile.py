@@ -72,7 +72,7 @@ def main():
         scrubbedFile.write("\n".join(scrubbedData))
 
     end = time.time()
-    print("Total execution time: ", (end - start))
+    print("Total execution time: {}ms".format((end - start) * 1000))
 
 # Bootstrap the main method
 if (__name__ == "__main__"):
