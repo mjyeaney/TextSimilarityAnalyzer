@@ -12,6 +12,8 @@ REFERENCE_TXT_PATH = os.path.join(".", "input_files", "sample_reference.txt")
 INPUT_TXT_PATH = os.path.join(".", "input_files", "sample_input.txt")
 OUTPUT_TXT_PATH = os.path.join(".", "output_files", "scrubbed_output.txt")
 
+FILE_ENCODING = "utf-8"
+
 def readAndMapFile(path):
     """
     Main file breaker - this takes a given file and breaks it into arbitrary 
@@ -27,9 +29,9 @@ def readAndMapFile(path):
         if (len(strippedLine) > 0):
             splitLines.append(strippedLine)
     
-    with open(path, "r", encoding="utf-8") as f:
+    with open(path, "r", encoding=FILE_ENCODING) as f:
         content = f.read()
-        items = content.split("\n")
+        items = content.split(os.linesep)
 
         for i in items:
             mapper(i)
@@ -68,8 +70,8 @@ def main():
         mapper(line, mapperPos)
         mapperPos = mapperPos + 1
     
-    with open(OUTPUT_TXT_PATH, "w", encoding="utf-8") as scrubbedFile:
-        scrubbedFile.write("\n".join(scrubbedData))
+    with open(OUTPUT_TXT_PATH, "w", encoding=FILE_ENCODING) as scrubbedFile:
+        scrubbedFile.write(os.linesep.join(scrubbedData))
 
     end = time.time()
     print("Total execution time: {}ms".format((end - start) * 1000))
