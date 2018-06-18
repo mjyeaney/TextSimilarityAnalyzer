@@ -34,6 +34,7 @@ def readAndMapFile(path):
         items = content.split(os.linesep)
 
         for i in items:
+            print("n-gram length = {}".format(len(i)))
             mapper(i)
         
     print("Read {} lines of text from {}".format(len(splitLines), path))
