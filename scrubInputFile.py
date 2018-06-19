@@ -11,7 +11,7 @@ import logging
 
 FILE_ENCODING = "utf-8"
 
-#   logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG)
 
 def readAndMapFile(path):
     """
@@ -30,7 +30,7 @@ def readAndMapFile(path):
     
     with open(path, "r", encoding=FILE_ENCODING) as f:
         content = f.read()
-        items = content.split(os.linesep)
+        items = content.split("\n")
 
         for i in items:
             logging.info("n-gram length = {}".format(len(i)))
@@ -69,7 +69,7 @@ def scrubFile(inputFilePath, referenceFilePath, outputFilePath):
         mapperPos = mapperPos + 1
     
     with open(outputFilePath, "w", encoding=FILE_ENCODING) as scrubbedFile:
-        scrubbedFile.write(os.linesep.join(scrubbedData))
+        scrubbedFile.write("\n".join(scrubbedData))
 
 def main():
     REFERENCE_TXT_PATH = os.path.join(".", "input_files", "sample_reference.txt")
