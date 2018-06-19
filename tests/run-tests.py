@@ -7,26 +7,26 @@ import time
 import io
 import os
 import sys
+import unittest
 
-def SampleLineIsAllCopied():
-    """
-    Checks the case where the sample line is a complete, copied fragment.
-    """
-    print("(Error: ENOIMPL, Missing test implementation)", file=sys.stderr)
+sys.path.append("../")
 
-def SampleLineIsPartialCopy():
-    """
-    Checks the case where the sample line only contains a fragment of a copied
-    piece.
-    """
-    print("(Error: ENOIMPL, Missing test implementation)", file=sys.stderr)
+import scrubInputFile
 
-def RunAll():
-    """
-    Runs all test methods and checks for proper behavior.
-    """
-    SampleLineIsAllCopied()
-    SampleLineIsPartialCopy()
+class TestSimilarityMethods(unittest.TestCase):
+
+    def test_SampleLineIsAllCopied(self):
+        """
+        Checks the case where the sample line is a complete, copied fragment.
+        """
+        self.fail("No implementation!!!")
+
+    def test_SampleLineIsPartialCopy(self):
+        """
+        Checks the case where the sample line only contains a fragment of a copied
+        piece.
+        """
+        self.fail("No implementation!!!")
 
 if (__name__ == "__main__"):
-    RunAll()
+    unittest.main()

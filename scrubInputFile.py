@@ -8,10 +8,6 @@ import os
 import time
 import io
 
-REFERENCE_TXT_PATH = os.path.join(".", "input_files", "sample_reference.txt")
-INPUT_TXT_PATH = os.path.join(".", "input_files", "sample_input.txt")
-OUTPUT_TXT_PATH = os.path.join(".", "output_files", "scrubbed_output.txt")
-
 FILE_ENCODING = "utf-8"
 
 def readAndMapFile(path):
@@ -40,10 +36,10 @@ def readAndMapFile(path):
     print("Read {} lines of text from {}".format(len(splitLines), path))
     return splitLines
 
-def main():
+def scrubFile(inputFilePath, referenceFilePath, outputFilePath):
     """
     Overall strategy - essentially, read in the policy document and make a 
-    joined, single character string out of it with unified casing. Then read 
+    joined, single character string o ut of it with unified casing. Then read 
     the input doc, break it into fragments, and attempt to locate each fragment 
     within the policy block.
 
@@ -54,10 +50,8 @@ def main():
     [1]: https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm
     """
 
-    start = time.time()
-
-    policyText = " ".join(readAndMapFile(REFERENCE_TXT_PATH)).lower()
-    inputText = readAndMapFile(INPUT_TXT_PATH)
+    policyText = " ".join(readAndMapFile(referenceFilePath)).lower()
+    inputText = readAndMapFile(inputFilePath)
     scrubbedData = []
     mapperPos = 0
 
@@ -71,10 +65,18 @@ def main():
         mapper(line, mapperPos)
         mapperPos = mapperPos + 1
     
-    with open(OUTPUT_TXT_PATH, "w", encoding=FILE_ENCODING) as scrubbedFile:
+    with open(outputFilePath, "w", encoding=FILE_ENCODING) as scrubbedFile:
         scrubbedFile.write(os.linesep.join(scrubbedData))
 
+def main():
+    REFERENCE_TXT_PATH = os.path.join(".", "input_files", "sample_reference.txt")
+    INPUT_TXT_PATH = os.path.join(".", "input_files", "sample_input.txt")
+    OUTPUT_TXT_PATH = os.path.join(".", "output_files", "scrubbed_output.txt")
+
+    start = time.time()
+    scrubFile(INPUT_TXT_PATH, REFERENCE_TXT_PATH, OUTPUT_TXT_PATH)
     end = time.time()
+
     print("Total execution time: {}ms".format((end - start) * 1000))
 
 # Bootstrap the main method
