@@ -7,8 +7,11 @@
 import os
 import time
 import io
+import logging
 
 FILE_ENCODING = "utf-8"
+
+#   logging.basicConfig(level=logging.DEBUG)
 
 def readAndMapFile(path):
     """
@@ -30,10 +33,10 @@ def readAndMapFile(path):
         items = content.split(os.linesep)
 
         for i in items:
-            print("n-gram length = {}".format(len(i)))
+            logging.info("n-gram length = {}".format(len(i)))
             mapper(i)
         
-    print("Read {} lines of text from {}".format(len(splitLines), path))
+    logging.info("Read {} lines of text from {}".format(len(splitLines), path))
     return splitLines
 
 def scrubFile(inputFilePath, referenceFilePath, outputFilePath):
@@ -57,7 +60,7 @@ def scrubFile(inputFilePath, referenceFilePath, outputFilePath):
 
     def mapper(line, index):
         if (policyText.find(line.lower()) > -1):
-            print("Found match at {}: {}".format(index, line))
+            logging.info("Found match at {}: {}".format(index, line))
         else:
             scrubbedData.append(line)
     
@@ -77,7 +80,7 @@ def main():
     scrubFile(INPUT_TXT_PATH, REFERENCE_TXT_PATH, OUTPUT_TXT_PATH)
     end = time.time()
 
-    print("Total execution time: {}ms".format((end - start) * 1000))
+    logging.info("Total execution time: {}ms".format((end - start) * 1000))
 
 # Bootstrap the main method
 if (__name__ == "__main__"):
