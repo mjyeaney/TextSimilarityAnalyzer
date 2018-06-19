@@ -26,9 +26,9 @@ class TestSimilarityMethods(unittest.TestCase):
 
         scrubInputFile.scrubFile(INPUT_TXT_PATH, REFERENCE_TXT_PATH, OUTPUT_TXT_PATH)
         
-        with open(OUTPUT_MASTER_TXT_PATH, "r", encoding="utf-8") as master:
+        with open(OUTPUT_MASTER_TXT_PATH, "r", encoding=scrubInputFile.FILE_ENCODING) as master:
             desired = master.read()
-            with open(OUTPUT_TXT_PATH, "r", encoding="utf-8") as f:
+            with open(OUTPUT_TXT_PATH, "r", encoding=scrubInputFile.FILE_ENCODING) as f:
                 result = f.read()
 
                 self.assertTrue(desired == result)
@@ -45,9 +45,9 @@ class TestSimilarityMethods(unittest.TestCase):
 
         scrubInputFile.scrubFile(INPUT_TXT_PATH, REFERENCE_TXT_PATH, OUTPUT_TXT_PATH)
         
-        with open(OUTPUT_MASTER_TXT_PATH, "r", encoding="utf-8") as master:
+        with open(OUTPUT_MASTER_TXT_PATH, "r", encoding=scrubInputFile.FILE_ENCODING) as master:
             desired = master.read()
-            with open(OUTPUT_TXT_PATH, "r", encoding="utf-8") as f:
+            with open(OUTPUT_TXT_PATH, "r", encoding=scrubInputFile.FILE_ENCODING) as f:
                 result = f.read()
 
                 self.assertFalse(desired == result)
