@@ -1,6 +1,6 @@
 """
     Test cases for the text similarity analyzer. We need to make sure 
-    we're properly identifying cases.abs
+    we're properly identifying cases.
 """
 
 import time
@@ -11,7 +11,7 @@ import unittest
 
 sys.path.append("./")
 
-import scrubInputFile
+import scrubber
 
 class TestSimilarityMethods(unittest.TestCase):
 
@@ -24,11 +24,11 @@ class TestSimilarityMethods(unittest.TestCase):
         OUTPUT_TXT_PATH = os.path.join(".", "tests", "case1-out.txt")
         OUTPUT_MASTER_TXT_PATH = os.path.join(".", "tests", "case1-master.txt")
 
-        scrubInputFile.scrubFile(INPUT_TXT_PATH, REFERENCE_TXT_PATH, OUTPUT_TXT_PATH)
+        scrubber.scrubFile(INPUT_TXT_PATH, REFERENCE_TXT_PATH, OUTPUT_TXT_PATH)
         
-        with open(OUTPUT_MASTER_TXT_PATH, "r", encoding=scrubInputFile.FILE_ENCODING) as master:
+        with open(OUTPUT_MASTER_TXT_PATH, "r", encoding=scrubber.FILE_ENCODING) as master:
             desired = master.read()
-            with open(OUTPUT_TXT_PATH, "r", encoding=scrubInputFile.FILE_ENCODING) as f:
+            with open(OUTPUT_TXT_PATH, "r", encoding=scrubber.FILE_ENCODING) as f:
                 result = f.read()
 
                 self.assertTrue(desired == result)
@@ -43,11 +43,11 @@ class TestSimilarityMethods(unittest.TestCase):
         OUTPUT_TXT_PATH = os.path.join(".", "tests", "case2-out.txt")
         OUTPUT_MASTER_TXT_PATH = os.path.join(".", "tests", "case1-master.txt")
 
-        scrubInputFile.scrubFile(INPUT_TXT_PATH, REFERENCE_TXT_PATH, OUTPUT_TXT_PATH)
+        scrubber.scrubFile(INPUT_TXT_PATH, REFERENCE_TXT_PATH, OUTPUT_TXT_PATH)
         
-        with open(OUTPUT_MASTER_TXT_PATH, "r", encoding=scrubInputFile.FILE_ENCODING) as master:
+        with open(OUTPUT_MASTER_TXT_PATH, "r", encoding=scrubber.FILE_ENCODING) as master:
             desired = master.read()
-            with open(OUTPUT_TXT_PATH, "r", encoding=scrubInputFile.FILE_ENCODING) as f:
+            with open(OUTPUT_TXT_PATH, "r", encoding=scrubber.FILE_ENCODING) as f:
                 result = f.read()
 
                 self.assertFalse(desired == result)

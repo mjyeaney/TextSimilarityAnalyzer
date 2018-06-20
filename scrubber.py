@@ -72,12 +72,12 @@ def scrubFile(inputFilePath, referenceFilePath, outputFilePath):
         scrubbedFile.write("\n".join(scrubbedData))
 
 def main():
-    REFERENCE_TXT_PATH = os.path.join(".", "input_files", "sample_reference.txt")
-    INPUT_TXT_PATH = os.path.join(".", "input_files", "sample_input.txt")
-    OUTPUT_TXT_PATH = os.path.join(".", "output_files", "scrubbed_output.txt")
+    baselineDocPath = os.path.join(".", "input_files", "sample_reference.txt")
+    inputDocPath = os.path.join(".", "input_files", "sample_input.txt")
+    resultsDocPath = os.path.join(".", "output_files", "scrubbed_output.txt")
 
     start = time.time()
-    scrubFile(INPUT_TXT_PATH, REFERENCE_TXT_PATH, OUTPUT_TXT_PATH)
+    scrubFile(inputDocPath, baselineDocPath, resultsDocPath)
     end = time.time()
 
     logging.info("Total execution time: {}ms".format((end - start) * 1000))
